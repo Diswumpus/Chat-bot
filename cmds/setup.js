@@ -16,7 +16,7 @@ module.exports = {
     .setTitle('Created!')
     .addField('Channel:', `▶ ${ch}`, true)
     .addField('ID:', `▶ ${ch.id}`, true)
-    .setColor('GREEN')
+    .setColor(message.client.color.color)
     message.channel.send(yesembed)
 }
 

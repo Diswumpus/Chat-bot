@@ -1,6 +1,7 @@
 const Discord = require('discord.js');
 const config = require('./config.json');
 const fs = require('fs');
+const confiig = require('./config2.json')
 const klawSync = require('klaw-sync')
 const mongoose = require('mongoose');
 
@@ -22,6 +23,8 @@ client.once('ready', async () => {
 client.commands = new Discord.Collection();
 client.slashcmds = new Discord.Collection();
 client.config = config;
+client.color = confiig;
+client.configg = confiig;
 //client.disbut = require('discord-buttons')(client);
 
 const slashFiles = fs.readdirSync('./slash').filter(file => file.endsWith('.js'));

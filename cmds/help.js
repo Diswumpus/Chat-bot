@@ -8,7 +8,7 @@ module.exports = {
         const helpp = new Discord.MessageEmbed()
         .setTitle(`Commands`)
         .setFooter(`${message.client.user.username}`, message.client.user.displayAvatarURL({ dynamic: true, size: 1024 }))
-        .setColor('BLUE')
+        .setColor(message.client.color.color)
         const { commands } = message.client;
         commands.forEach(cmd => {
             helpp.addField(cmd.name, cmd.description);
@@ -18,7 +18,7 @@ module.exports = {
         const helpp = new Discord.MessageEmbed()
         .setTitle(`${args[0]}`)
         .setFooter(`${message.client.user.username}`, message.client.user.displayAvatarURL({ dynamic: true, size: 1024 }))
-        .setColor('BLUE')
+        .setColor(message.client.color.color)
         const { commands } = message.client;
         const cmd = commands.find(c => c.name === args[0])
         helpp.addField(cmd.name, cmd.description)
@@ -26,6 +26,7 @@ module.exports = {
             message.channel.send(
                 new Discord.MessageEmbed()
                 .setTitle(`Not found!`)
+                .setColor('RED')
             )
         }
         await message.channel.send(helpp);
