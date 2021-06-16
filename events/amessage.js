@@ -4,6 +4,9 @@ module.exports = {
 	name: 'message',
 	async execute(message, client, args) {
         try{
+            if(message.author.bot){
+                return
+            }
         if(message.channel.name != 'bp'){
             return
         }

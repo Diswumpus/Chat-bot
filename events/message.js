@@ -3,6 +3,9 @@ const msgg = require('../models/message')
 module.exports = {
 	name: 'message',
 	async execute(message, client, args) {
+        if(message.author.bot){
+            return
+        }
         if(message.channel.name === 'bp'){
             return
         }
