@@ -13,6 +13,11 @@ module.exports = {
             let cmdsa = await msgg.findOne({
                 message: message.content
             });
+            if(!cmdsa){
+                cmdsa = await msgg.findOne({
+                    words: message.content
+                });
+            }
             if(cmdsa){
                 message.reply({ content: `${cmdsa.reply}` })
             } else {

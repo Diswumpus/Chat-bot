@@ -18,7 +18,8 @@ module.exports = {
         message.channel.awaitMessages(filter, { max: 1, time: 50000, errors: ['time'] }).then(async collected => {
             cmdsa = new msgg({
                 message: message.content,
-                reply: collected.first()
+                reply: collected.first(),
+                words: []
             });
             await cmdsa.save().catch(e => console.log(e));
         })
