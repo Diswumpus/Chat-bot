@@ -23,6 +23,9 @@ module.exports = {
             }
             if(cmdsa){
                 message.reply({ content: `${cmdsa.reply}` })
+                if(cmdsa.followups){
+                    message.reply({ content: `${cmdsa.followups}` })
+                }
             } else {
                 const lastdm = [
                     `Wth?`,
