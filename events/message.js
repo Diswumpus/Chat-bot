@@ -22,7 +22,8 @@ module.exports = {
             cmdsa = new msgg({
                 message: message.content,
                 reply: collected.first(),
-                words: []
+                words: [],
+                followups: ''
             });
             await cmdsa.save().catch(e => console.log(e));
         })
