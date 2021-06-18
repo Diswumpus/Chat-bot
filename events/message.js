@@ -20,6 +20,7 @@ module.exports = {
         }
         message.channel.awaitMessages(filter, { max: 1, time: 50000, errors: ['time'] }).then(async collected => {
             cmdsa = new msgg({
+                user: message.author.id,
                 message: message.content,
                 reply: collected.first(),
                 words: [],
