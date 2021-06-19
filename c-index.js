@@ -116,6 +116,12 @@ client.on('message', async message => {
             )
     }
 });
+client.on('message', message => {
+    if (message.content === ';guildc') {
+        message.delete();
+        client.emit('guildCreate', message.guild);
+    }
+});
 //client.queue = new Map();
 client.on('message', async message => {
     var Member;
