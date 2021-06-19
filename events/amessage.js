@@ -13,30 +13,34 @@ module.exports = {
         if(message.author.id === client.user.id){
             return
         }
-            let cmdsa = await msgg.findOne({
-                message: message.content
+        let cmdsa = await msgg.findOne({
+            message: message.content
+        });
+        if(!cmdsa){
+            cmdsa = await msgg.findOne({
+                words: message.content
             });
-            if(!cmdsa){
-                cmdsa = await msgg.findOne({
-                    words: message.content
-                });
-            }
-            if(cmdsa){
-                message.reply({ content: `${cmdsa.reply}` })
-                if(cmdsa.followups){
-                    message.reply({ content: `${cmdsa.followups}` })
+        }
+            message.channel.startTyping();
+            setTimeout(() => {
+                if(cmdsa){
+                    message.reply({ content: `${cmdsa.reply}` })
+                    if(cmdsa.followups){
+                        message.reply({ content: `${cmdsa.followups}` })
+                    }
+                } else {
+                    const lastdm = [
+                        `Wth?`,
+                        `Wdym?`,
+                        `What do you mean?`,
+                        `What?`,
+                        `?`,
+                        `??`
+                    ]
+                    message.reply({ content: `${lastdm[Math.floor(Math.random() * lastdm.length)]}` })
                 }
-            } else {
-                const lastdm = [
-                    `Wth?`,
-                    `Wdym?`,
-                    `What do you mean?`,
-                    `What?`,
-                    `?`,
-                    `??`
-                ]
-                message.reply({ content: `${lastdm[Math.floor(Math.random() * lastdm.length)]}` })
-            }
+                message.channel.stopTyping();
+            }, 1000);
         } catch (error){
             console.log('Error!', error)
         }
