@@ -8,17 +8,29 @@ module.exports = {
         if (!client.application?.owner) await client.application?.fetch();
         //https://discord.com/oauth2/authorize?client_id=841782635386109972&scope=bot+applications.commands
         const data = {
-            name: 'link',
-            description: 'Link a channel!',
+            name: 'edit',
+            description: 'Edit a reply for a message!',
             options: [{
-                name: 'channel',
-                type: 'CHANNEL',
-                description: 'What channel?',
+                name: 'message',
+                type: 'STRING',
+                description: 'What message?',
                 required: true,
+            },
+            {
+                name: 'new_reply',
+                type: 'STRING',
+                description: 'What reply?',
+                required: false,
+            },
+            {
+                name: 'followups',
+                type: 'STRING',
+                description: 'What followup?',
+                required: false,
             }],
         };
 
-        //const command = await client.application?.commands.create(data);
+        const command = await client.application?.commands.create(data);
         //const command = await client.guilds.cache.get('842575277249921074')?.commands.create(data);
         //await command.setPermissions(permissions);
         console.log(command);
