@@ -1,4 +1,5 @@
-const msgg = require('../models/message')
+const msgg = require('../models/message');
+const chh = require('../models/link');
 
 module.exports = {
 	name: 'message',
@@ -7,7 +8,10 @@ module.exports = {
             if(message.author.bot){
                 return
             }
-        if(message.channel.name != 'bp'){
+            let thech = await chh.findOne({
+                guild: message.guild.id
+            });
+        if(message.channel.name != 'bp' && thech.ch != message.channel.id){
             return
         }
         if(message.author.id === client.user.id){
