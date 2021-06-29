@@ -18,11 +18,11 @@ module.exports = {
             permsm[perm] = true;
         }
         let cmdsa = await perms.findOne({
-            user: interaction.user.id
+            user: euser.id
         });
         if (cmdsa) {
             perms.findOne({
-                user: interaction.user.id
+                user: euser.id
             }, async (err, dUser) => {
                 if (err) console.log(err);
                 /* Stuff */
@@ -45,19 +45,19 @@ module.exports = {
         } else if (!cmdsa) {
             if (perm === 'edit') {
                 cmdsa = new perms({
-                    user: interaction.user.id,
+                    user: euser.id,
                     edit: permsm[perm]
                 });
                 await cmdsa.save().catch(e => console.log(e));
             } else if (perm === 'delete') {
                 cmdsa = new perms({
-                    user: interaction.user.id,
+                    user: euser.id,
                     delete: permsm[perm]
                 });
                 await cmdsa.save().catch(e => console.log(e));
             } else if (perm === 'admin') {
                 cmdsa = new perms({
-                    user: interaction.user.id,
+                    user: euser.id,
                     admin: permsm[perm]
                 });
                 await cmdsa.save().catch(e => console.log(e));
