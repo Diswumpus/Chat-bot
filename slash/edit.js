@@ -1,11 +1,16 @@
 const Discord = require("discord.js");
 const chh = require('../models/message')
 const wait = require('util').promisify(setTimeout);
+const perms = require('../models/permissions');
 
 module.exports = {
     name: "edit",
     description: "Remove your data!",
     async execute(client, interaction) {
+        let permss = await perms.findOne({
+            user: interaction.user.id
+        });
+        if(permss.admin === true || permss.edit === true){
         const message = interaction.options?.find(c => c?.name === 'message')?.value;
         const newreply = interaction.options?.find(c => c?.name === 'new_reply')?.value;
         const followupp = interaction.options?.find(c => c?.name === 'followups')?.value;
@@ -49,6 +54,6 @@ module.exports = {
                 .setColor('RED')
             )
         }
-
+    }
     }
 }

@@ -1,4 +1,5 @@
 const msgg = require('../models/message')
+const chh = require('../models/link');
 
 module.exports = {
 	name: 'message',
@@ -6,7 +7,10 @@ module.exports = {
         if(message.author.bot){
             return
         }
-        if(message.channel.name === 'bp'){
+        let thech = await chh.findOne({
+            guild: message.guild.id
+        });
+        if(message.channel.name === 'bp' || thech?.ch === message.channel.id){
             return
         }
         const filter = response => {
@@ -22,6 +26,7 @@ module.exports = {
             return console.log('Embed:', message.embeds)
         }
         message.channel.awaitMessages(filter, { max: 1, time: 50000, errors: ['time'] }).then(async collected => {
+            if(cmdsa.reply.toLowerCase() === collected.first().content.toLowerCase() || cmdsa.message.toLowerCase() === message.content.toLowerCase()) return
             if(collected.first().author.bot){
                 return
             }

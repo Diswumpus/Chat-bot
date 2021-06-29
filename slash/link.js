@@ -6,6 +6,7 @@ module.exports = {
     name: "link",
     description: "Remove your data!",
     async execute(client, interaction) {
+        if (!interaction.member.permissions.has('MANAGE_MESSAGES')) return
         const ch = interaction.options?.find(c => c?.name === 'channel')?.channel;
         let cmdsa = await chh.findOne({
             guild: interaction.guild.id

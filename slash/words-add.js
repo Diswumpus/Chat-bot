@@ -1,10 +1,15 @@
 const msgg = require('../models/message')
 const Discord = require('discord.js')
+const perms = require('../models/permissions');
 
 module.exports = {
     name: 'aliases_add',
     description: 'Add a word to a message',
     async execute(client, interaction) {
+        let permss = await perms.findOne({
+            user: interaction.user.id
+        });
+        if(permss.admin === true || permss.edit === true){
         try{
             const findword = interaction.options?.find(c => c?.name === 'old_word')?.value;
             const newword = interaction.options?.find(c => c?.name === 'aliase')?.value;
@@ -47,5 +52,6 @@ module.exports = {
         } catch (error){
             console.log('Error!', error)
         }
+    }
 	},
 };
