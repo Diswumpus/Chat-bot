@@ -18,11 +18,11 @@ module.exports = {
             return
         }
         let cmdsa = await msgg.findOne({
-            message: message.content
+            message: message.content.toLowerCase()
         });
         if(!cmdsa){
             cmdsa = await msgg.findOne({
-                words: message.content
+                words: message.content.toLowerCase()
             });
         }
             message.channel.startTyping();

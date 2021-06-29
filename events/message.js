@@ -25,13 +25,11 @@ module.exports = {
             if(collected.first().author.bot){
                 return
             }
-            if(collected.first().embeds.length > 0){
-                return console.log('Embed:', message.embeds)
-            }
+            if(collected.first().content > 3) return console.log('Not adding message! Content: ', collected.first().content)
             cmdsa = new msgg({
                 user: message.author.id,
-                message: message.content,
-                reply: collected.first(),
+                message: message.content.toLowerCase(),
+                reply: collected.first().content.toLowerCase(),
                 words: [],
                 followups: ''
             });
