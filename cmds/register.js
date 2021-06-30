@@ -69,8 +69,18 @@ module.exports = {
                 required: false,
             }],
         };
-        const command = await client.application?.commands.create(data);
-        //const command = await client.guilds.cache.get('842575277249921074')?.commands.create(data);
+        const err = {
+            name: 'error',
+            description: 'Fetch an error!',
+            options: [{
+                name: 'code',
+                type: 'STRING',
+                description: 'What code?',
+                required: false,
+            }], 
+        }
+        //const command = await client.application?.commands.create(data);
+        const command = await client.guilds.cache.get('834199640702320650')?.commands.create(err);
         //await command.setPermissions(permissions);
         console.log(command);
     }

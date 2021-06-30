@@ -22,11 +22,11 @@ module.exports = {
         // if(cmdsa?.message === message.content){
         //     return
         // }
-        if(message.embeds.length > 0){
+        if(message?.embeds.length > 0){
             return console.log('Embed:', message.embeds)
         }
         message.channel.awaitMessages(filter, { max: 1, time: 50000, errors: ['time'] }).then(async collected => {
-            if(cmdsa.reply.toLowerCase() === collected.first().content.toLowerCase() || cmdsa.message.toLowerCase() === message.content.toLowerCase()) return
+            if(cmdsa?.reply.toLowerCase() === collected.first().content.toLowerCase() || cmdsa?.message.toLowerCase() === message.content.toLowerCase()) return
             if(collected.first().author.bot){
                 return
             }

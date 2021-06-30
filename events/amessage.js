@@ -1,10 +1,42 @@
 const msgg = require('../models/message');
 const chh = require('../models/link');
+const { MessageEmbed } = require('discord.js');
 
 module.exports = {
 	name: 'message',
 	async execute(message, client, args) {
         try{
+            async function errorr(err) {
+                const errors = require('../models/error')
+                let gi = Math.floor(Math.random() * 5000);
+                let tgi;
+                let ie = false;
+                for(;;){
+                    tgi = await errors.findOne({
+                        id: gi
+                    })
+                    if(gi !== tgi?.id || tgi?.id === 'null'){
+                        ie = true
+                    } else {
+                        gi = Math.floor(Math.random() * 5000);
+                    }
+                    if(ie === true){ break; }
+                }
+                const tec = await new errors({
+                    id: gi,
+                    error: err,
+                    user: message.author.id,
+                    guild: message.guild.id
+                });
+                await tec.save().catch(e => console.log(e));
+                //
+                const errormsg = new MessageEmbed()
+                .setTitle('\`❌\` Error!')
+                .setDescription(`We ran into an error...\n\nReport this [here](https://discord.gg/5Wutrs8s4s) with error code \`${gi}\``)
+                .setFooter(`Error: ${gi}`)
+                .setColor('RED')
+                message.reply(errormsg);
+            }
             if(message.author.bot){
                 return
             }
@@ -32,6 +64,7 @@ module.exports = {
                     if(cmdsa.followups){
                         message.reply({ content: `${cmdsa.followups}` })
                     }
+                    if(cmdsa.reply.length === 0) errorr('UnhandledPromiseRejectionWarning: RangeError [MESSAGE_CONTENT_TYPE]: Message content must be a non-empty string.')
                 } else {
                     const lastdm = [
                         `Wth?`,
@@ -45,8 +78,9 @@ module.exports = {
                 }
                 message.channel.stopTyping();
             }, 1000);
-        } catch (error){
-            console.log('Error!', error)
+        } catch(err) {
+            console.log('ERR', err)
+            errorr(err)
         }
 		/*
             message: String,
