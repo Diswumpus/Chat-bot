@@ -17,7 +17,7 @@ module.exports = {
                 .setColor(client.color.color)
                 lea.forEach(c => {
                     u = client.users.cache.get(c.user);
-                    yembed.addField(`Case: ${c.id}`, `User: ${u.tag}`);
+                    yembed.addField(`Case: ${c.id}`, `User: ${u.tag}\n\nError: ${c.error}`);
                   });
                 return await interaction.reply(yembed)
             }
@@ -25,7 +25,7 @@ module.exports = {
                 u = client.users.cache.get(cmdsa.user);
                 const foundembed = new Discord.MessageEmbed()
                 .setTitle(`Results for ${findword} `)
-                .addField(`Case: ${cmdsa.id}`, `User: ${u.tag}`)
+                .addField(`Case: ${cmdsa.id}`, `User: ${u.tag}\n\nError: ${cmdsa.error}`)
                 .setColor(client.color.color)
                 interaction.reply(foundembed)
             } else {
