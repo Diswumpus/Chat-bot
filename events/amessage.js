@@ -32,6 +32,7 @@ module.exports = {
                 //
                 const errormsg = new MessageEmbed()
                 .setTitle('\`❌\` Error!')
+                .setImage('https://cdn.tixte.com/uploads/turtlepaw.is-from.space/kqiv6xq729a.png')
                 .setDescription(`We ran into an error...\n\nReport this [here](https://discord.gg/5Wutrs8s4s) with error code \`${gi}\``)
                 .setFooter(`Error: ${gi}`)
                 .setColor('RED')
