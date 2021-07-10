@@ -10,7 +10,7 @@ module.exports = {
         if(interaction.options?.size === 0){
             const nooptions = new Discord.MessageEmbed()
             .setTitle('You must have 1 option')
-            return await interaction.reply(nooptions);
+            return await interaction.reply({ embeds: [nooptions] });
         }
         let permss = await perms.findOne({
             user: interaction.user.id
@@ -25,7 +25,7 @@ module.exports = {
             .setTitle(`\`✅\` Removed`)
             .setDescription(`Removed \`${message || newreply}!\``)
             .setColor(client.color.color)
-        await interaction.reply(datadone);
+        await interaction.reply({ embeds: [datadone] });
     }
     }
 }

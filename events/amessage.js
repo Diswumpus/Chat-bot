@@ -35,7 +35,7 @@ module.exports = {
             .setDescription(`We ran into an error...\n\nReport this [here](https://discord.gg/5Wutrs8s4s) with error code \`${gi}\``)
             .setFooter(`Error: ${gi}`)
             .setColor('RED')
-            message.reply(errormsg);
+            message.reply({ embeds: [errormsg] });
         }
         try{
             if(message.author.bot){

@@ -25,7 +25,7 @@ module.exports = {
                 const foundembed = new Discord.MessageEmbed()
                 .setTitle(`Added ${newword} to ${cmdsa.message} words`)
                 .setColor(client.color.color)
-                interaction.reply(foundembed)
+                interaction.reply({ embeds: [foundembed] })
                 if(cmdsa.words.indexOf(findword) !== -1){
                     msgg.findOne({
                         words: findword
@@ -47,7 +47,7 @@ module.exports = {
                 const notfoundembed = new Discord.MessageEmbed()
                 .setTitle(`Could not find any matches for ${findword}`)
                 .setColor('RED')
-                interaction.reply(notfoundembed)
+                interaction.reply({ embeds: [notfoundembed] })
             }
         } catch (error){
             console.log('Error!', error)

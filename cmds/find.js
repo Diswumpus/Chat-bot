@@ -20,12 +20,12 @@ module.exports = {
                 .setTitle(`Results for ${findword} `)
                 .addField(`Message: ${cmdsa.message}`, `Reply: ${cmdsa.reply}`)
                 .setColor(message.client.color.color)
-                message.reply(foundembed)
+                message.reply({ embeds: [foundembed] })
             } else {
                 const notfoundembed = new Discord.MessageEmbed()
                 .setTitle(`Could not find any matches for ${findword}`)
                 .setColor('RED')
-                message.reply(notfoundembed)
+                message.reply({ embeds: [notfoundembed] })
             }
         } catch (error){
             console.log('Error!', error)

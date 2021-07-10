@@ -19,7 +19,7 @@ module.exports = {
                     u = client.users.cache.get(c.user);
                     yembed.addField(`Case: ${c.id}`, `User: ${u.tag}\n\nError: \`${c.error}\``);
                   });
-                return await interaction.reply(yembed)
+                return await interaction.reply({ embeds: [yembed] })
             }
             if(cmdsa){
                 u = client.users.cache.get(cmdsa.user);
@@ -27,12 +27,12 @@ module.exports = {
                 .setTitle(`Results for ${findword} `)
                 .addField(`Case: ${cmdsa.id}`, `User: ${u.tag}\n\nError: \`${cmdsa.error}\``)
                 .setColor(client.color.color)
-                interaction.reply(foundembed)
+                interaction.reply({ embeds: [foundembed] })
             } else {
                 const notfoundembed = new Discord.MessageEmbed()
                 .setTitle(`Could not find any matches for ${findword}`)
                 .setColor('RED')
-                interaction.reply(notfoundembed)
+                interaction.reply({ embeds: [notfoundembed] })
             }
         } catch (error){
             console.log('Error!', error)

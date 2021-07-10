@@ -7,7 +7,7 @@ module.exports = {
   description: "Setup the server!",
   async execute(client, interaction) {
       if(!interaction.guild.me.permissions.has('MANAGE_CHANNELS')){
-          return message.reply('I don\'t have permissions')
+          return interaction.reply('I don\'t have permissions')
       }
     if(interaction.guild.me.permissions.has('MANAGE_CHANNELS') && interaction.member.permissions.has('ADMINISTRATOR')){
     const ch = await interaction.guild.channels.create('bp', { //Create a channel
@@ -36,7 +36,7 @@ module.exports = {
     .addField('Channel:', `▶ ${ch}`, true)
     .addField('ID:', `▶ ${ch.id}`, true)
     .setColor(client.color.color)
-    await interaction.reply(yesembed)
+    await interaction.reply({ embeds: [yesembed], components: [await require('../interactions').link(ch.id, 'Jump to channel')] })
 }
 
   }

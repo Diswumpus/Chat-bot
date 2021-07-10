@@ -34,7 +34,7 @@ module.exports = {
             .addField('Channel:', `▶ ${ch}`, true)
             .addField('ID:', `▶ ${ch.id}`, true)
             .setColor(client.color.color)
-        await interaction.reply(datadone);
+        await interaction.reply({ embeds: [datadone], components: [await require('../interactions').link(`https://discord.com/channels/${interaction.guild.id}/${ch.id}`, 'Jump to channel')] });
 
     }
 }

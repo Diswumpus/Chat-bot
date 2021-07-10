@@ -46,13 +46,13 @@ module.exports = {
             .addField('Follow Ups:', `▶ ${ncmdsa.followups}`, true)
             .addField('Words:', `▶ ${ncmdsa.words.map(a => a.name)}`, true)
             .setColor(client.color.color)
-        await interaction.reply(datadone);
+        await interaction.reply({ embeds: [datadone] });
         } else if(!cmdsa){
-            return interaction.reply(
+            return interaction.reply({ embeds: [
                 new Discord.MessageEmbed()
                 .setTitle('Not Found!')
                 .setColor('RED')
-            )
+            ]})
         }
     }
     }

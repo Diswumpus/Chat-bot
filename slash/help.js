@@ -14,7 +14,7 @@ module.exports = {
         commands.forEach(cmd => {
             helpp.addField(cmd.name, cmd.description);
         });
-        await interaction.reply(helpp);
+        await interaction.reply({ embeds: [helpp] });
     } else if(cmddd) {
         const helpp = new Discord.MessageEmbed()
         .setFooter(`${client.user.username}`, client.user.displayAvatarURL({ dynamic: true, size: 1024 }))
@@ -26,9 +26,9 @@ module.exports = {
             const notfound = new Discord.MessageEmbed()
             .setTitle(`Not found!`)
             .setColor('RED')
-            await interaction.reply(notfound)
+            return await interaction.reply({ embeds: [notfound] })
         }
-        await interaction.reply(helpp);
+        await interaction.reply({ embeds: [helpp] });
     }
     }
 }

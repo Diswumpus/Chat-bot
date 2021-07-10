@@ -23,19 +23,19 @@ module.exports = {
                 lea.forEach(c => {
                     yembed.addField(`Message: ${c.message}`, `Reply: ${c.reply}`);
                   });
-                return await interaction.reply(yembed)
+                return await interaction.reply({ embeds: [yembed] })
             }
             if(cmdsa){
                 const foundembed = new Discord.MessageEmbed()
                 .setTitle(`Results for ${findword} `)
                 .addField(`Message: ${cmdsa.message}`, `Reply: ${cmdsa.reply}`)
                 .setColor(client.color.color)
-                interaction.reply(foundembed)
+                interaction.reply({ embeds: [foundembed] })
             } else {
                 const notfoundembed = new Discord.MessageEmbed()
                 .setTitle(`Could not find any matches for ${findword}`)
                 .setColor('RED')
-                interaction.reply(notfoundembed)
+                interaction.reply({ embeds: [notfoundembed] })
             }
         } catch (error){
             console.log('Error!', error)

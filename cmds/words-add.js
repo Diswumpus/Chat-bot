@@ -31,7 +31,7 @@ module.exports = {
                 const notfoundembed = new Discord.MessageEmbed()
                 .setTitle(`Could not find any matches for ${findword}`)
                 .setColor('RED')
-                message.reply(notfoundembed)
+                message.reply({ embeds: [notfoundembed] })
             }
         } catch (error){
             console.log('Error!', error)

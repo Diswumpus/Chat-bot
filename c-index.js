@@ -58,14 +58,14 @@ client.on('interaction', async interaction => {
 
     const command = client.slashcmds.get(commandName);
     if (!command) {
-        // interaction.reply(`Sorry i don't think /${commandName} is possible ${opps}`);
+        //...
     }
     else {
         try {
             await command.execute(client, interaction);
         } catch (error) {
             console.error(error);
-            // interaction.reply(`Something went very wrong ${opps}`);
+            //...
         }
     }
 });
@@ -108,12 +108,12 @@ client.on('message', async message => {
     // if (!prefixRegex.test(message.content)) return;
     if (message.content.match(mentionRegex)) {
         let currentPrefix = config.prefix;
-            message.reply(
+            message.reply({ embeds: [
                 new Discord.MessageEmbed()
                     .setTitle(`Hey there!`)
                     .setDescription(`My prefix is \`${config.prefix}\``)
                     .setColor('BLUE')
-            )
+            ]})
     }
 });
 client.on('message', message => {
@@ -149,7 +149,7 @@ client.on('message', async message => {
         const command = client.commands.get(commandName) || client.commands.find(cmd => cmd.aliases && cmd.aliases.includes(commandName));
         const cat = client.emojis.cache.find(em => em.name === "cat1");
         if (!command) {
-            //message.reply(`That's not a command ${cat}`);
+            //...
         }
         else {
             try {
@@ -157,8 +157,6 @@ client.on('message', async message => {
             } catch (error) {
                 console.error("Yikes!!");
                 console.error(error);
-                const x = client.emojis.cache.find(em => em.name === "X1");
-                message.reply(errorr);
             }
         }
     }

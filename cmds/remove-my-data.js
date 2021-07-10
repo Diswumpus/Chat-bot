@@ -11,7 +11,7 @@ module.exports = {
     .setTitle('Done!')
     .setDescription(`I have deleted all your data from my database! __**This could take some time**__`)
     .setColor('GREEN')
-    message.reply(datadone)
+    message.reply({ embeds: [datadone] })
 
   }
 }

@@ -39,7 +39,7 @@ module.exports = {
     .addField('Channel:', `▶ ${ch}`, true)
     .addField('ID:', `▶ ${ch.id}`, true)
     .setColor(message.client.color.color)
-    message.channel.send(yesembed)
+    message.channel.send({ embeds: [yesembed] })
 }
 
   }

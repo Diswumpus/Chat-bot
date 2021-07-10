@@ -72,7 +72,7 @@ module.exports = {
             if(method === 'remove'){
                 datadone.addField('Permissions removed:', `${perm}`, true)
             }
-        interaction.reply(datadone)
+        interaction.reply({ embeds: [datadone] })
         }
     }
 }
